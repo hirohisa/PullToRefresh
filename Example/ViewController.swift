@@ -57,5 +57,35 @@ class ViewController: PullToRefresh.CollectionViewController {
         return cell
     }
 
+    override func viewWillRefresh() {
+        println("will refresh")
+        let delay = 2.0 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            self.viewDidRefresh()
+        })
+    }
+
+    override func viewDidRefresh() {
+        println("did refresh")
+        refreshControl.endRefreshing()
+    }
+
+    override func viewWillLoadRequest() {
+        println("will load request")
+        let delay = 2.0 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            self.viewDidLoadRequest()
+        })
+    }
+
+    override func viewDidLoadRequest() {
+        println("did")
+    }
+
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        super.scrollViewDidScroll(scrollView)
+    }
 }
 
