@@ -16,27 +16,19 @@ public class CollectionViewController: UICollectionViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: "_viewWillRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: "_willRefresh", forControlEvents: UIControlEvents.ValueChanged)
     }
 
-    public func viewWillRefresh() {
+    public func willRefresh() {
     }
 
-    public func viewDidRefresh() {
-        refreshControl.endRefreshing()
-    }
-
-    public func viewWillLoadRequest() {
-    }
-
-    public func viewDidLoadRequest() {
-        loadRequestControl.endRefreshing()
+    public func willLoadRequest() {
     }
 
     public override func scrollViewDidScroll(scrollView: UIScrollView) {
         let bottom = scrollView.contentOffset.y + scrollView.frame.height
         if bottom >= scrollView.contentSize.height && state == .Ready {
-            _viewWillLoadRequest()
+            _willLoadRequest()
         }
     }
 
@@ -55,13 +47,13 @@ extension CollectionViewController {
         case Reqesting
     }
 
-    func _viewWillRefresh() {
-        self.viewWillRefresh()
+    func _willRefresh() {
+        self.willRefresh()
     }
 
-    func _viewWillLoadRequest() {
+    func _willLoadRequest() {
         loadRequestControl.beginRefreshing()
-        self.viewWillLoadRequest()
+        self.willLoadRequest()
     }
 
 }
