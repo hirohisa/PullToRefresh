@@ -6,18 +6,32 @@ Use `UIRefreshControl` on UICollectionViewController.
 
 ## Features
 - [x] Support to pull to refresh
-- [ ] Support to load request after scrolling bottom
+- [x] Support to load request after scrolling bottom
 - [ ] Create UITableViewController
 
 
 ## Usage
 
-- UIRefreshControl start animation and call method
-  ```
-  func viewWillRefresh()
-  ```
+- refreshControl
 
-- UIRefreshControl end animation. It needs to be called by `self view controller`.
-  ```
-  func viewDidRefresh()
-  ```
+refreshControl start animation and callback method:
+```
+func willRefresh()
+```
+
+If data that controller has refresh, controller call method:
+```
+refreshControl.endRefreshing()
+```
+
+- loadRequestControl
+
+scrolling to bottom and callback method:
+```
+func willLoadRequest()
+```
+
+After load request, controller call method:
+```
+loadRequestControl.endRefreshing()
+```
