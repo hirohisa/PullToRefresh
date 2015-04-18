@@ -82,6 +82,7 @@ class ViewController: PullToRefresh.CollectionViewController {
 
     override func viewDidLoadRequest() {
         println("did")
+        loadRequestControl.endRefreshing()
     }
 
     override func scrollViewDidScroll(scrollView: UIScrollView) {

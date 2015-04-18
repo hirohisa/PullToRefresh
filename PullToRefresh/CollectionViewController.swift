@@ -8,15 +8,10 @@
 
 import UIKit
 
-enum State {
-    case Ready
-    case Reqesting
-}
-
 public class CollectionViewController: UICollectionViewController {
 
     public var refreshControl = UIRefreshControl()
-    var state: State = .Ready
+    public var loadRequestControl = UIRefreshControl()
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +30,7 @@ public class CollectionViewController: UICollectionViewController {
     }
 
     public func viewDidLoadRequest() {
-        state = .Ready
+        loadRequestControl.endRefreshing()
     }
 
     public override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -44,16 +39,28 @@ public class CollectionViewController: UICollectionViewController {
             _viewWillLoadRequest()
         }
     }
+
+    private var state: State {
+        if loadRequestControl.refreshing {
+            return .Reqesting
+        }
+        return .Ready
+    }
 }
 
 extension CollectionViewController {
+
+    enum State {
+        case Ready
+        case Reqesting
+    }
 
     func _viewWillRefresh() {
         self.viewWillRefresh()
     }
 
     func _viewWillLoadRequest() {
-        state = .Reqesting
+        loadRequestControl.beginRefreshing()
         self.viewWillLoadRequest()
     }
 
