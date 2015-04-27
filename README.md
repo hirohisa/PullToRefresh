@@ -8,7 +8,7 @@ Use `UIRefreshControl` on UICollectionViewController.
 - [x] Support to pull to refresh
 - [x] Support to load request after scrolling bottom
 - [ ] Create UITableViewController about `loadRequestControl`
-- [ ] Support Cocoapods
+- [x] Support Cocoapods
 
 
 ## Usage
