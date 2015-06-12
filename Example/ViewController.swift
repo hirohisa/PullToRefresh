@@ -7,84 +7,36 @@
 //
 
 import UIKit
-import PullToRefresh
 
-let reuseIdentifier = "Cell"
-
-class ViewController: PullToRefresh.CollectionViewController {
+class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = UIColor.whiteColor()
 
-        let collectionViewLayout = UICollectionViewFlowLayout()
-        let width = view.frame.width/2
-        collectionViewLayout.itemSize = CGSize(width: width, height: 100)
-        collectionViewLayout.minimumInteritemSpacing = 0
-        collectionViewLayout.minimumLineSpacing = 0
-        collectionView?.collectionViewLayout = collectionViewLayout
-
-        collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
     }
 
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
-    }
-
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
-
-        var backgroundColor = UIColor.blackColor()
-        switch indexPath.row%3 {
-        case 1:
-            backgroundColor = UIColor.grayColor()
-        case 2:
-            backgroundColor = UIColor.lightGrayColor()
-        default:
-            break
-        }
-        cell.backgroundColor = backgroundColor
+        cell.textLabel?.text = "\(indexPath.row)"
 
         return cell
     }
 
-    override func willRefresh() {
-        println("will refresh")
-        let delay = 2.0 * Double(NSEC_PER_SEC)
-        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue(), {
-            self.refreshControlEndRefresh()
-        })
-    }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
-    func refreshControlEndRefresh() {
-        refreshControl.endRefreshing()
-    }
+        let viewController = CollectionViewController()
 
-    override func willLoadRequest() {
-        println("will load request")
-        let delay = 2.0 * Double(NSEC_PER_SEC)
-        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue(), {
-            self.loadRequestControlEndRefresh()
-        })
-    }
-
-    func loadRequestControlEndRefresh() {
-        loadRequestControl.endRefreshing()
-    }
-
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        super.scrollViewDidScroll(scrollView)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
