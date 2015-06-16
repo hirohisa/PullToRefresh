@@ -34,9 +34,19 @@ class ViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
-        let viewController = CollectionViewController()
+        var viewController: UIViewController?
+        switch indexPath.row {
+        case 0:
+            viewController = TableViewController()
+        case 1:
+            viewController = CollectionViewController()
+        default:
+            break
+        }
 
-        navigationController?.pushViewController(viewController, animated: true)
+        if let viewController = viewController {
+            navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
 

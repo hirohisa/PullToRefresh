@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65AE3FD51B3059C1004638DB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AE3FD41B3059C1004638DB /* TableViewController.swift */; };
 		A1358D8B1ACAF8F900C4CC88 /* PullToRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = A1358D8A1ACAF8F900C4CC88 /* PullToRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A1358D911ACAF8FA00C4CC88 /* PullToRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1358D851ACAF8F900C4CC88 /* PullToRefresh.framework */; };
 		A1358D981ACAF8FA00C4CC88 /* PullToRefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1358D971ACAF8FA00C4CC88 /* PullToRefreshTests.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65AE3FD41B3059C1004638DB /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		A1358D851ACAF8F900C4CC88 /* PullToRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PullToRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1358D891ACAF8F900C4CC88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1358D8A1ACAF8F900C4CC88 /* PullToRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PullToRefresh.h; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			children = (
 				A1358D8A1ACAF8F900C4CC88 /* PullToRefresh.h */,
 				A1358DCF1ACAF9E600C4CC88 /* CollectionViewController.swift */,
+				65AE3FD41B3059C1004638DB /* TableViewController.swift */,
 				A1358D881ACAF8F900C4CC88 /* Supporting Files */,
 			);
 			path = PullToRefresh;
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1358DD01ACAF9E600C4CC88 /* CollectionViewController.swift in Sources */,
+				65AE3FD51B3059C1004638DB /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

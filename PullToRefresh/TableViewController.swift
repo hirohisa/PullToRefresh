@@ -1,0 +1,49 @@
+//
+//  TableViewController.swift
+//  PullToRefresh
+//
+//  Created by Hirohisa Kawasaki on 6/16/15.
+//  Copyright (c) 2015 Hirohisa Kawasaki. All rights reserved.
+//
+
+import UIKit
+
+public class TableViewController: UITableViewController {
+
+    public var loadRequestControl = UIRefreshControl()
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    public func willLoadRequest() {
+    }
+
+    public override func scrollViewDidScroll(scrollView: UIScrollView) {
+        let bottom = scrollView.contentOffset.y + scrollView.frame.height
+        if bottom >= scrollView.contentSize.height && state == .Ready {
+            _willLoadRequest()
+        }
+    }
+
+    private var state: State {
+        if loadRequestControl.refreshing {
+            return .Reqesting
+        }
+        return .Ready
+    }
+}
+
+extension TableViewController {
+
+    enum State {
+        case Ready
+        case Reqesting
+    }
+
+    func _willLoadRequest() {
+        loadRequestControl.beginRefreshing()
+        self.willLoadRequest()
+    }
+
+}
