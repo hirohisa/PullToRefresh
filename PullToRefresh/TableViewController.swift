@@ -20,6 +20,12 @@ public class TableViewController: UITableViewController {
     }
 
     public override func scrollViewDidScroll(scrollView: UIScrollView) {
+
+        let overtop = scrollView.contentOffset.y + scrollView.contentInset.top < 0
+        if refreshControl == nil && overtop {
+            requestOvertop()
+        }
+
         let bottom = scrollView.contentOffset.y + scrollView.frame.height
         if bottom >= scrollView.contentSize.height && state == .Ready {
             _willLoadRequest()
@@ -32,6 +38,10 @@ public class TableViewController: UITableViewController {
         }
         return .Ready
     }
+
+    public func requestOvertop() {
+    }
+
 }
 
 extension TableViewController {

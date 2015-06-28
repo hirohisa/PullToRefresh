@@ -35,12 +35,20 @@ class TableViewController: PullToRefresh.TableViewController {
         return cell
     }
 
-    func refreshControlEndRefresh() {
-        refreshControl?.endRefreshing()
+    override func requestOvertop() {
+        println(__FUNCTION__)
+        let delay = 2.0 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            self.requestOverTopEndRequest()
+        })
+    }
+
+    func requestOverTopEndRequest() {
     }
 
     override func willLoadRequest() {
-        println("will load request")
+        println(__FUNCTION__)
         let delay = 2.0 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
