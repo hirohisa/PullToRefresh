@@ -43,7 +43,7 @@ class CollectionViewController: PullToRefresh.CollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
 
         var backgroundColor = UIColor.blackColor()
         switch indexPath.row%3 {
@@ -60,7 +60,7 @@ class CollectionViewController: PullToRefresh.CollectionViewController {
     }
 
     override func willRefresh() {
-        println("will refresh")
+        print("will refresh")
         let delay = 2.0 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
@@ -73,7 +73,7 @@ class CollectionViewController: PullToRefresh.CollectionViewController {
     }
 
     override func willLoadRequest() {
-        println("will load request")
+        print("will load request")
         let delay = 2.0 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {

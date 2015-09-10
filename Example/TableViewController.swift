@@ -28,7 +28,7 @@ class TableViewController: PullToRefresh.TableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
         cell.textLabel?.text = indexPath.row.description
 
@@ -36,7 +36,7 @@ class TableViewController: PullToRefresh.TableViewController {
     }
 
     override func requestOvertop() {
-        println(__FUNCTION__)
+        print(__FUNCTION__)
         let delay = 2.0 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
@@ -48,7 +48,7 @@ class TableViewController: PullToRefresh.TableViewController {
     }
 
     override func willLoadRequest() {
-        println(__FUNCTION__)
+        print(__FUNCTION__)
         let delay = 2.0 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
