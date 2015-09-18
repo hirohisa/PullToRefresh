@@ -34,7 +34,7 @@ public class TableViewController: UITableViewController {
 
     private var state: State {
         if loadRequestControl.refreshing {
-            return .Reqesting
+            return .Requesting
         }
         return .Ready
     }
@@ -48,7 +48,7 @@ extension TableViewController {
 
     enum State {
         case Ready
-        case Reqesting
+        case Requesting
     }
 
     func _willLoadRequest() {

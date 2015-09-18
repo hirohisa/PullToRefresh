@@ -34,7 +34,7 @@ public class CollectionViewController: UICollectionViewController {
 
     private var state: State {
         if loadRequestControl.refreshing {
-            return .Reqesting
+            return .Requesting
         }
         return .Ready
     }
@@ -44,7 +44,7 @@ extension CollectionViewController {
 
     enum State {
         case Ready
-        case Reqesting
+        case Requesting
     }
 
     func _willRefresh() {
