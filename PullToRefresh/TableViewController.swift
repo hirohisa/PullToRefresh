@@ -27,7 +27,7 @@ public class TableViewController: UITableViewController {
         }
 
         let bottom = scrollView.contentOffset.y + scrollView.frame.height
-        if bottom >= scrollView.contentSize.height && state == .Ready {
+        if bottom >= view.frame.height && bottom >= scrollView.contentSize.height && state == .Ready {
             _willLoadRequest()
         }
     }
