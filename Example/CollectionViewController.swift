@@ -60,7 +60,7 @@ class CollectionViewController: PullToRefresh.CollectionViewController {
     }
 
     override func willRefresh() {
-        print("will refresh")
+        print(__FUNCTION__)
         let delay = 2.0 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
@@ -73,7 +73,7 @@ class CollectionViewController: PullToRefresh.CollectionViewController {
     }
 
     override func willLoadRequest() {
-        print("will load request")
+        print(__FUNCTION__)
         let delay = 2.0 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
