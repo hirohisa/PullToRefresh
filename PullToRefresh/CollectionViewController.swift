@@ -10,13 +10,16 @@ import UIKit
 
 public class CollectionViewController: UICollectionViewController {
 
-    public var refreshControl = UIRefreshControl()
+    public var refreshControl: UIRefreshControl? = UIRefreshControl()
     public var loadRequestControl = UIRefreshControl()
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: "_willRefresh", forControlEvents: UIControlEvents.ValueChanged)
+
+        if let refreshControl = refreshControl {
+            collectionView?.addSubview(refreshControl)
+            refreshControl.addTarget(self, action: "_willRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        }
     }
 
     public func willRefresh() {

@@ -69,7 +69,7 @@ class CollectionViewController: PullToRefresh.CollectionViewController {
     }
 
     func refreshControlEndRefresh() {
-        refreshControl.endRefreshing()
+        refreshControl?.endRefreshing()
     }
 
     override func willLoadRequest() {
